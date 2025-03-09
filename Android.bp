@@ -34,10 +34,18 @@ license {
 java_library_host {
     name: "json-schema-validator",
     visibility: [":__subpackages__"],
-    libs: [
+    static_libs: [
+        "jackson-annotations",
         "jackson-core",
+        "jackson-databind",
+        "slf4j-api",
     ],
     srcs: [
         "src/main/**/*.java",
+        "android/src/stubs/**/*.java",
+    ],
+    exclude_srcs: [
+        "src/main/java/com/networknt/schema/serialization/YamlMapperFactory.java",
+        "src/main/java/com/networknt/schema/regex/JoniRegularExpression.java",
     ],
 }
